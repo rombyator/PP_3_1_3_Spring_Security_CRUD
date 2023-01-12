@@ -1,0 +1,181 @@
+/** COMMON **/
+html, body {
+    background: #eee;
+    height: 100%;
+    padding: 0;
+}
+
+/** Home page **/
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.central-panel {
+    min-width: 260px;
+    padding: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.central-panel .btn {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.central-panel .btn:last-child {
+    margin-bottom: 0;
+}
+
+/** MENU **/
+.main-menu {
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+
+.main-menu .menu-link {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    padding: 5px;
+    background: #6394eb;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #111;
+}
+
+/** BUTTONS **/
+.btn {
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.btn-small {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.btn-large {
+    padding: 15px;
+}
+
+.btn-primary {
+    background: #6394eb;
+}
+
+.btn-action {
+    background: #f98458;
+}
+
+.btn__text {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/** USER LISTING **/
+.user-list {
+    margin: 1rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    width: 800px;
+}
+
+.user-list-header {
+}
+
+.user-list-header__item {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.user-list__item {
+    margin-bottom: 10px;
+    padding: 7px;
+}
+
+.user-list__item:last-child {
+    margin-bottom: 0;
+}
+
+.user-list__item:nth-child(even) {
+    background: #dfdfdf;
+}
+
+.user-info {
+}
+
+.user-info__item {
+    padding: 5px;
+}
+
+.user-info__actions {
+    text-align: center;
+}
+
+/** USER FORM **/
+.user-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.user-form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.user-form input {
+    padding: 7px;
+    font-size: 1rem;
+}
+
+.user-form__item {
+    margin-bottom: 15px;
+}
+
+.user-form__item-name {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/** USER DETAILS **/
+.user-details {
+    margin-bottom: 30px;
+}
+
+.user-details__item {
+    font-size: 1.2rem;
+}
+
+.user-details__item td {
+    padding: 5px;
+}
+
+.user-details__item-name {
+    font-weight: bold;
+}
+
+.user-details__item-role {
+    margin: 5px;
+    padding: 3px;
+    background: #6394eb;
+    border: 0;
+    border-radius: 3px;
+    font-size: .8rem;
+    text-transform: uppercase;
+}

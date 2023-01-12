@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users CRUD</title>
+    <th:block th:insert="fragments/styles"/>
+</head>
+<body>
+<th:block th:insert="fragments/main-menu" />
+
+<h1>User details</h1>
+
+<table class="user-details">
+    <tr class="user-details__item">
+        <td class="user-details__item-name">Name:</td>
+        <td th:text="${user.name}"></td>
+    </tr>
+    <tr class="user-details__item">
+        <td class="user-details__item-name">Email:</td>
+        <td th:text="${user.email}"></td>
+    </tr>
+    <tr class="user-details__item">
+        <td class="user-details__item-name">Age:</td>
+        <td th:text="${user.age}"></td>
+    </tr>
+    <tr class="user-details__item">
+        <td class="user-details__item-name">Roles:</td>
+        <td>
+            <span class="user-details__item-role"
+                  th:unless="${#lists.isEmpty(user.roles)}"
+                  th:each="role : ${user.roles}">
+                <th:block th:utext="${role.name}"/>
+            </span>
+        </td>
+    </tr>
+    <tr class="user-details__item">
+        <td colspan="2" class="user-details__actions">
+            <a th:href="@{/admin/{id}/edit(id=${user.id})}" class="btn btn-small btn-action">Edit User</a>
+        </td>
+    </tr>
+</table>
+
+<a href="/admin" class="btn btn-primary btn-large">All Users</a>
+</body>
+</html>

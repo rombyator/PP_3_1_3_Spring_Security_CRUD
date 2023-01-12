@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users CRUD</title>
+    <th:block th:insert="fragments/styles"/>
+</head>
+<body>
+<th:block th:insert="fragments/main-menu"/>
+
+<h1>Create User</h1>
+
+<form method="POST" th:action="@{/admin/add}" th:object="${user}" class="user-form">
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Name:</span>
+            <input type="text" minlength="2" maxlength="50" th:field="*{name}" name="name" />
+        </label>
+    </div>
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Password:</span>
+            <input type="text" min="3" th:field="*{password}" name="password" />
+        </label>
+    </div>
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Email:</span>
+            <input type="email" required th:field="*{email}" name="email" />
+        </label>
+    </div>
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Age:</span>
+            <input type="number" min="0" max="150" th:field="*{age}" name="age" />
+        </label>
+    </div>
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Roles:</span>
+            <select multiple required th:field="*{roles}">
+                <option th:each="role : ${roles}"
+                        th:value="${role.id}"
+                        th:text="${role.name}">
+                </option>
+            </select>
+        </label>
+    </div>
+    <div class="user-form__actions">
+        <input type="submit" value="Create" class="btn btn-action btn-large user-form__submit"/>
+    </div>
+</form>
+
+<a href="/admin" class="btn btn-primary btn-large">All Users</a>
+</body>
+</html>

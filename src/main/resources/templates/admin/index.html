@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users CRUD</title>
+    <th:block th:insert="fragments/styles"/>
+</head>
+<body>
+<th:block th:insert="fragments/main-menu" />
+
+<h1>Users CRUD</h1>
+
+<table class="user-list">
+    <thead class="user-list-header">
+    <tr>
+        <th class="user-list-header__item">User Name</th>
+        <th class="user-list-header__item">Age</th>
+        <th class="user-list-header__item">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(users)}">
+        <td colspan="3">
+            <h2>No users yet :(</h2>
+        </td>
+    </tr>
+    <tr th:if="${not #lists.isEmpty(users)}" th:each="user : ${users}" class="user-list__item user-info">
+        <td class="user-info__item">
+            <a th:href="@{/admin/{id}(id=${user.id})}"
+               th:text="${user.name}" class="user-info__name">user</a>
+        </td>
+        <td class="user-info__item">
+            <span th:text="${user.age}" class="user-info__age">age</span>
+        </td>
+        <td class="user-info__item">
+            <span th:text="${user.email}" class="user-info__email">email</span>
+        </td>
+        <td class="user-info__item user-info__actions">
+            <a th:href="@{/admin/{id}/edit(id=${user.id})}"
+               class="btn btn-small btn-action user-info__edit">edit</a>
+            <a th:href="@{/admin/{id}/delete(id=${user.id})}"
+               class="btn btn-small btn-action user-info__delete">delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/admin/add" class="btn btn-primary btn-large">Create user</a>
+</body>
+</html>

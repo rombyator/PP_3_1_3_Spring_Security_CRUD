@@ -1,11 +1,46 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Spring Security Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users CRUD</title>
+    <th:block th:insert="fragments/styles" />
 </head>
 <body>
-<h1>Welcome to Index PAGE!</h1>
-
+<main class="main">
+    <h1>PP 3.1.3 | Spring Security</h1>
+    <div class="central-panel">
+        <table class="user-details">
+            <tr class="user-details__item">
+                <td class="user-details__item-name">User name:</td>
+                <td th:text="${user.username}"></td>
+            </tr>
+            <tr class="user-details__item">
+                <td class="user-details__item-name">User roles:</td>
+                <td>
+                    <span class="user-details__item-role"
+                          th:unless="${#lists.isEmpty(user.authorities)}"
+                          th:each="role : ${user.authorities}">
+                        <th:block th:utext="${role.name}"/>
+                    </span>
+                    <span th:if="${#lists.isEmpty(user.authorities)}">
+                        No roles assigned
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <a href="/admin" class="btn btn-primary">
+            <span class="btn__text">Admin panel</span>
+            <span>(username=admin, password=admin)</span>
+        </a>
+        <a href="/user" class="btn btn-primary">
+            <span class="btn__text">User page</span>
+            <span>(username=user, password=user)</span>
+        </a>
+    </div>
+</main>
 
 </body>
 </html>
