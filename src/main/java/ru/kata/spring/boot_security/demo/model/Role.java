@@ -2,9 +2,11 @@ package ru.kata.spring.boot_security.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Role implements GrantedAuthority {
@@ -12,6 +14,7 @@ public class Role implements GrantedAuthority {
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String name;
 
     public static Role adminRole() {
@@ -63,4 +66,19 @@ public class Role implements GrantedAuthority {
             '}';
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+
+        Role other = (Role) obj;
+
+        return Objects.equals(name, other.name);
+    }
 }

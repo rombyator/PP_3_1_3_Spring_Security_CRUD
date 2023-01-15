@@ -2,6 +2,7 @@ package ru.kata.spring.boot_security.demo.init;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.kata.spring.boot_security.demo.exceptions.UserEmailAlreadyInUse;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
@@ -25,7 +26,7 @@ public class DbInit {
      * Add admin user if no admins present in db
      */
     @PostConstruct
-    private void initializeDb() {
+    private void initializeDb() throws UserEmailAlreadyInUse {
         if (userService.isUserWithRoleExists(Role.adminRole())) {
             return;
         }

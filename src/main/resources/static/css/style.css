@@ -179,3 +179,14 @@ html, body {
     font-size: .8rem;
     text-transform: uppercase;
 }
+
+/** INFO MESSAGES **/
+.notification {
+    padding: 1rem;
+    border-radius: 5px;
+    width: 260px;
+}
+
+.warning {
+    background: darksalmon;
+}

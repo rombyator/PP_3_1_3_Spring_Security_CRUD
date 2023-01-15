@@ -14,7 +14,7 @@
     <div class="central-panel">
         <table class="user-details">
             <tr class="user-details__item">
-                <td class="user-details__item-name">User name:</td>
+                <td class="user-details__item-name">User email:</td>
                 <td th:text="${user.username}"></td>
             </tr>
             <tr class="user-details__item">
@@ -33,11 +33,11 @@
         </table>
         <a href="/admin" class="btn btn-primary">
             <span class="btn__text">Admin panel</span>
-            <span>(username=admin, password=admin)</span>
+            <span>(email=admin@local.test, password=admin)</span>
         </a>
         <a href="/user" class="btn btn-primary">
             <span class="btn__text">User page</span>
-            <span>(username=user, password=user)</span>
+            <span>(email=user@local.test, password=user)</span>
         </a>
     </div>
 </main>

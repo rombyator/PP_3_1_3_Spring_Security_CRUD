@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.controller;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +14,10 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-    private final UserService userService;
+    private final UserDetailsService userDetailsService;
 
-    public HomeController(UserService userService) {
-        this.userService = userService;
+    public HomeController(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
     }
 
     @GetMapping
@@ -24,7 +25,7 @@ public class HomeController {
         var user = Optional
             .ofNullable(principal)
             .map(Principal::getName)
-            .map(userService::loadUserByUsername)
+            .map(userDetailsService::loadUserByUsername)
             .orElse(User.anonymousUser());
         model.addAttribute("user", user);
 

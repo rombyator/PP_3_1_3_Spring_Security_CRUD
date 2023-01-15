@@ -13,29 +13,29 @@
 
 <h1>Create User</h1>
 
-<form method="POST" th:action="@{/admin/add}" th:object="${user}" class="user-form">
+<form method="POST" th:action="@{/admin/add}" th:object="${newUser}" class="user-form">
     <div class="user-form__item">
         <label>
             <span class="user-form__item-name">Name:</span>
-            <input type="text" minlength="2" maxlength="50" th:field="*{name}" name="name" />
+            <input type="text" minlength="2" maxlength="50" th:field="*{name}" name="name"/>
         </label>
     </div>
     <div class="user-form__item">
         <label>
             <span class="user-form__item-name">Password:</span>
-            <input type="text" min="3" th:field="*{password}" name="password" />
+            <input type="text" min="3" th:field="*{password}" name="password"/>
         </label>
     </div>
     <div class="user-form__item">
         <label>
             <span class="user-form__item-name">Email:</span>
-            <input type="email" required th:field="*{email}" name="email" />
+            <input type="email" required th:field="*{email}" name="email"/>
         </label>
     </div>
     <div class="user-form__item">
         <label>
             <span class="user-form__item-name">Age:</span>
-            <input type="number" min="0" max="150" th:field="*{age}" name="age" />
+            <input type="number" min="0" max="150" th:field="*{age}" name="age"/>
         </label>
     </div>
     <div class="user-form__item">
@@ -48,6 +48,9 @@
                 </option>
             </select>
         </label>
+    </div>
+    <div th:if="${param.emailInUse}" class="notification warning" style="margin-bottom: 1rem;">
+        This email is already in use
     </div>
     <div class="user-form__actions">
         <input type="submit" value="Create" class="btn btn-action btn-large user-form__submit"/>
